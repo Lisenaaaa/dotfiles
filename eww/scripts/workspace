@@ -1,0 +1,8 @@
+#!/bin/bash
+workspaces() {
+    deno run --allow-run ~/.config/eww/bar/scripts/workspaces.ts
+}
+workspaces
+bspc subscribe desktop node_transfer | while read -r _; do
+    workspaces
+done
