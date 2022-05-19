@@ -1,4 +1,0 @@
-#!/bin/bash
-
-echo "(box (button :class 'focusedWs' :onclick 'notify-send clicked click' 'foo') (button 'bar'))"
-

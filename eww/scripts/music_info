@@ -18,7 +18,8 @@ get_status() {
 ## Get song
 get_song() {
 	song=`playerctl --player=spotify metadata xesam:title`
-	if [[ -z "$song" ]]; then
+	# song="long title"
+  if [[ -z "$song" ]]; then
 		echo "Offline"
 	else
 		echo "$song"

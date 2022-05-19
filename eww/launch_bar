@@ -2,7 +2,7 @@
 
 ## Files and cmd
 FILE="$HOME/.cache/eww_launch.xyz"
-EWW="/usr/bin/eww -c $HOME/.config/eww/bar"
+EWW="/usr/bin/eww -c $HOME/dotfiles/eww"
 
 ## Open widgets 
 run_eww() {

@@ -17,21 +17,21 @@
 (defvar wifi_rev false)
 (defvar time_rev false)
 
-(defvar eww "/usr/bin/eww -c $HOME/.config/eww/bar")
+(defvar eww "/usr/bin/eww -c $HOME/dotfiles/eww")
 
-(deflisten workspace "~/.config/eww/bar/scripts/workspace")
+(deflisten workspace "~/dotfiles/eww/scripts/workspace")
 
-(defpoll COL_WLAN :interval "1m" "~/.config/eww/bar/scripts/wifi --COL")
-(defpoll ESSID_WLAN :interval "1m" "~/.config/eww/bar/scripts/wifi --ESSID")
-(defpoll WLAN_ICON :interval "1m" "~/.config/eww/bar/scripts/wifi --ICON")
+(defpoll COL_WLAN :interval "1m" "~/dotfiles/eww/scripts/wifi --COL")
+(defpoll ESSID_WLAN :interval "1m" "~/dotfiles/eww/scripts/wifi --ESSID")
+(defpoll WLAN_ICON :interval "1m" "~/dotfiles/eww/scripts/wifi --ICON")
 
 
-(defpoll song :interval "2s"  "~/.config/eww/bar/scripts/music_info --song")
-(defpoll song_artist :interval "2s"  "~/.config/eww/bar/scripts/music_info --artist")
-(defpoll current_status :interval "1s"  "~/.config/eww/bar/scripts/music_info --time")
-(defpoll song_status :interval "1s"  "~/.config/eww/bar/scripts/music_info --status")
-(defpoll cover_art :interval "2s"  "/usr/bin/deno run --allow-run --allow-read --allow-write ~/.config/eww/bar/scripts/cover.ts run")
-(defpoll music_percent :interval "1s" "/usr/bin/deno run --allow-run ~/.config/eww/bar/scripts/musicRemainingPercentage.ts")
+(defpoll song :interval "2s"  "~/dotfiles/eww/scripts/music_info --song")
+(defpoll song_artist :interval "2s"  "~/dotfiles/eww/scripts/music_info --artist")
+(defpoll current_status :interval "1s"  "~/dotfiles/eww/scripts/music_info --time")
+(defpoll song_status :interval "1s"  "~/dotfiles/eww/scripts/music_info --status")
+(defpoll cover_art :interval "2s"  "/usr/bin/deno run --allow-run --allow-read --allow-write ~/dotfiles/eww/scripts/cover.ts run")
+(defpoll music_percent :interval "1s" "/usr/bin/deno run --allow-run ~/dotfiles/eww/scripts/musicRemainingPercentage.ts")
 
 (defpoll calendar_day :interval "20h" "date '+%d'")
 (defpoll calendar_year :interval "20h" "date '+%Y'")
@@ -42,7 +42,7 @@
   (eventbox :onhover "${eww} update wifi_rev=true"
     :onhoverlost "${eww} update wifi_rev=false"
     (box :vexpand "false" :hexpand "false" :space-evenly "false"
-      (button :class "module-wif" :onclick "~/.config/eww/bar/scripts/networkpopup" :wrap "false" :limit-width 12 :style "color: ${COL_WLAN};" WLAN_ICON)
+      (button :class "module-wif" :onclick "~/dotfiles/eww/scripts/networkpopup" :wrap "false" :limit-width 12 :style "color: ${COL_WLAN};" WLAN_ICON)
       (revealer :transition "slideright"
         :reveal wifi_rev
         :duration "350ms"
@@ -70,7 +70,7 @@
         :limit-width 2
         :tooltip "battery on ${battery}%"
         :show_truncated false
-        :onclick "$HOME/.config/eww/bar/scripts/pop system"
+        :onclick "$HOME/dotfiles/eww/scripts/pop system"
         :wrap false
       ""))))
 
@@ -84,7 +84,7 @@
         :class "iconmem"
         :limit-width 2
         :tooltip "using ${memory}% ram"
-        :onclick "$HOME/.config/eww/bar/scripts/pop system"
+        :onclick "$HOME/dotfiles/eww/scripts/pop system"
         :show_truncated false
         :wrap false
       ""))))
@@ -105,7 +105,7 @@
         :reveal time_rev
         :duration "350ms"
         (button :class "clock_date_class"
-          :onclick "$HOME/.config/eww/bar/scripts/pop calendar" clock_date
+          :onclick "$HOME/dotfiles/eww/scripts/pop calendar" clock_date
         )
       ))))
 
@@ -147,14 +147,14 @@
     :onhoverlost "${eww} update music_reveal=false"
     (box :class "module-2"  :space-evenly "false" :vexpand "false" :hexpand "false"
       (box :class "song_cover_art" :vexpand "false" :hexpand "false" :style "background-image: url('${cover_art}');")
-      (button :class "song" :wrap "true" :onclick "~/.config/eww/bar/scripts/pop music" song)
+      (button :class "song" :wrap "true" :onclick "~/dotfiles/eww/scripts/pop music" song)
       (revealer :transition "slideright"
         :reveal music_reveal
         :duration "350ms"
         (box :vexpand "false" :hexpand "false" :oreintation "h"
-          (button :class "song_btn_prev" :onclick "~/.config/eww/bar/scripts/music_info --prev" "")
-          (button :class "song_btn_play" :onclick "~/.config/eww/bar/scripts/music_info --toggle" song_status)
-          (button :class "song_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" ""))))))
+          (button :class "song_btn_prev" :onclick "~/dotfiles/eww/scripts/music_info --prev" "")
+          (button :class "song_btn_play" :onclick "~/dotfiles/eww/scripts/music_info --toggle" song_status)
+          (button :class "song_btn_next" :onclick "~/dotfiles/eww/scripts/music_info --next" ""))))))
 
 
 
@@ -197,7 +197,8 @@
   ))
 
 (defwindow bar
-  :geometry (geometry :x "0%"
+  :geometry (geometry 
+    :x "0%"
     :y "6px"
     :width "1908px"
     :height "30px"
@@ -337,9 +338,9 @@
       (label :halign "center" :class "music" :wrap "true" :limit-width 13 :text song)
       (label :halign "center" :class "music_artist" :wrap "true" :limit-width 15 :text song_artist)
       (box  :spacing 15 :halign "center" :space-evenly "false" :vexpand "false" :hexpand "false"
-        (button :class "music_btn_prev" :onclick "~/.config/eww/bar/scripts/music_info --prev" "")
-        (button :class "music_btn_play" :onclick "~/.config/eww/bar/scripts/music_info --toggle" song_status)
-        (button :class "music_btn_next" :onclick "~/.config/eww/bar/scripts/music_info --next" ""))
+        (button :class "music_btn_prev" :onclick "~/dotfiles/eww/scripts/music_info --prev" "")
+        (button :class "music_btn_play" :onclick "~/dotfiles/eww/scripts/music_info --toggle" song_status)
+        (button :class "music_btn_next" :onclick "~/dotfiles/eww/scripts/music_info --next" ""))
       (box :class "music_bar" :halign "center" :vexpand "false" :hexpand "false" :space-evenly "false"
         (scale
           :class "music_bar"

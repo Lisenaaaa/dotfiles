@@ -9,6 +9,7 @@ pgrep -x picom > /dev/null || picom --config ~/dotfiles/picom/picom.conf --exper
 # polybar -c ~/dotfiles/polybar/config.ini skye && killall polybar && polybar -c ~/dotfiles/polybar/config.ini skye &
 eww daemon
 /usr/lib/polkit-kde-authentication-agent-1 &
+pgrep -x activate-linux > /dev/null || ~/misc/activate-linux/bin/activate-linux "Touch Grass" "Go outside to touch grass." &
 
 # misc
 redshift -PO 4000
@@ -18,9 +19,9 @@ bspc config focus_follows_pointer true
 bspc config window_gap 6
 
 # workspaces
-bspc monitor DP-2 -d 1 2 3 4 5
+bspc monitor DP-3 -d 1 2 3 4 5
 bspc monitor HDMI-0 -d 1 2 3 4 5
-bspc monitor DP-1 -d 1 2 3 4 5
+bspc monitor DP-0 -d 1 2 3 4 5
 
 # bspwm rules
 bspc rule -a zoom state=floating center=on follow=on border=off
