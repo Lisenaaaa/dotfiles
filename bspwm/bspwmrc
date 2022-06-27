@@ -10,9 +10,10 @@ pgrep -x picom > /dev/null || picom --config ~/dotfiles/picom/picom.conf --exper
 eww daemon
 /usr/lib/polkit-kde-authentication-agent-1 &
 pgrep -x activate-linux > /dev/null || ~/misc/activate-linux/bin/activate-linux "Touch Grass" "Go outside to touch grass." &
+pulseaudio &
 
 # misc
-redshift -PO 4000
+redshift -PO 6000
 
 # bspwm config
 bspc config focus_follows_pointer true

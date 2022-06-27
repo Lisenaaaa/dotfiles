@@ -12,8 +12,8 @@ run_eww() {
 ## Launch or close widgets accordingly
 if [[ ! -f "$FILE" ]]; then
 	touch "$FILE"
-	run_eww && bspc config -m HDMI-0 top_padding 49
+	run_eww && bspc config -m DP-3 top_padding 49
 else
 	${EWW} close-all #&& killall eww
-	rm "$FILE" && bspc config -m HDMI-0 top_padding 0
+	rm "$FILE" && bspc config -m DP-3 top_padding 0
 fi
