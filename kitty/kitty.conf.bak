@@ -1,0 +1,13 @@
+include catppuccin.conf
+
+# background_opacity 0.75
+
+confirm_os_window_close 0
+
+font_family Fira Code Regular Nerd Font Complete Mono 
+
+
+# BEGIN_KITTY_THEME
+# Catppuccin-Latte
+include current-theme.conf
+# END_KITTY_THEME
