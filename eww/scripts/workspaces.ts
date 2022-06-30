@@ -97,8 +97,8 @@ class yuck {
   }
 }
 enum WorkspaceIcons {
-  focused = "綠",
-  occupied = "",
+  focused = "",
+  occupied = "",
   unoccupied = "",
 }
 

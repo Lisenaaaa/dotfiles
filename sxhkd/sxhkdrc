@@ -5,7 +5,11 @@
 # discord canary
 super + d
     discord-canary
- 
+
+# element
+super + e
+    element-desktop
+
 # vscodium
 super + c
     vscodium
