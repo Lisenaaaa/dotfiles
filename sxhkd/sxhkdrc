@@ -2,9 +2,9 @@
 # programs
 #
 
-# discord canary
+# discord
 super + d
-    discord-canary
+    discord
 
 # element
 super + e
@@ -33,6 +33,10 @@ super + v
 # program launcher
 super + space
     rofi -modi 'drun' -show drun -show-icons
+
+# lock screen
+super + l
+    betterlockscreen -l blur dim
 
 # Reload SXHKD
 super + shift + e
